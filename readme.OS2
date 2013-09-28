@@ -1,0 +1,29 @@
+26 Jan 2006
+
+
+Other than a couple small changes, the major reason for this version
+is the release of OpenWatcom 1.4 GA which I use to compile. So, this
+upload includes binary and source.
+
+To build:
+
+cd into SRC directory
+
+wmake [owos2 or owclean]
+
+the owos2 option will build console and pm version
+
+
+Oh, if you use the console version of NT/XP you can build it with OW14GA
+on a Win machine - sorry OS/2 only peoples.
+
+Also... sorry about the white background Doodle.
+
+
+Changes:
+
+1. Still doing little changes in dialogs
+
+2. Patched with Sergey Pinigin's svn changes, guess this works the
+   same as FTE cvs, but I don't know - feedback?
+

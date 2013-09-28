@@ -1,0 +1,122 @@
+# FTE mode for editing MS_DOS and OS/2
+# CONFIG.SYS files
+# maintained by m_debusk@sourceforge.com
+# Revision 2002-05-07
+#
+# Thank you, Michael Taylor, FTE for OS/2 developer,
+# for your kind assistance with this file.
+
+colorize CNFGSYS {
+    SyntaxParser = 'SIMPLE';
+    
+    color {
+        { 'Normal',        'Lang_Default' },
+        { 'Keyword',       'Editor_Keywords' },
+        { 'Number',        'Lang_DecimalNumber' },
+        { 'HexNumber',     'Lang_HexNumber' },
+        { 'Punctuation',   'Lang_Punctuation' },
+        { 'String',        'Lang_String' },
+        { 'Comment',       'Lang_Comment' },
+        { 'CPreprocessor', 'Lang_Preprocessor' },
+        { 'Function',      'Lang_Function' },
+        { 'Label',         'Lang_Label' },
+    };
+    
+# CONFIG.SYS keywords
+keyword 'Editor_Keywords' {
+    'AUTOFAIL', 'BASEDEV', 'BREAK', 'BUFFERS', 'CALL', 'CLOCKSCALE',
+    'CODEPAGE', 'COUNTRY', 'DEVICE', 'DEVICEHIGH', 'DEVINFO', 'DISKCACHE',
+    'DOS', 'DRIVEPARM', 'DUMPPROCESS', 'EARLYMEMINIT', 'FCBS', 'FILES',
+    'I13PAGES', 'IFS', 'INSTALL', 'IOPL', 'LASTDRIVE', 'LDRSTACKOPT',
+    'LIBPATH', 'MAXWAIT', 'MEMMAN', 'NUMLOCK', 'PAUSEONERROR',
+    'PRINTMONBUFSIZE', 'PRIORITY', 'PRIORITY_DISK_IO', 'PROTECTONLY',
+    'PROTSHELL', 'PSD', 'RASKDATA', 'REIPL', 'RMSIZE', 'RUN', 'SHELL',
+    'STACKS', 'SUPPRESSPOPUPS', 'SWAPPATH', 'SWITCHES', 'THREADS', 'TIMESLICE',
+    'TRACE', 'TRACEBUF', 'TRAPDUMP'
+};
+
+# SET statement keywords
+keyword 'Editor_Keywords2' { 
+    'AUTOSTART', 'BEGINLIBPATH', 'BOOKSHELF', 'CLASSPATH', 'CMPATH', 'COMSPEC',
+    'DELDIR', 'DEVICEFONTDISABLED', 'DIRCMD', 'DISPLAY', 'DISPLAYTYPE',
+    'DLSINI', 'DMIPATH', 'DOS', 'DPATH', 'DSPPATH', 'ENDLIBPATH', 'EPMPATH',
+    'ETC', 'GLOSSARY', 'GRADD_CHAINS', 'HELP', 'HOME', 'HOSTNAME', 'I18NDIR',
+    'IKEYMAN_HOME', 'IKEYMAN40_HOME', 'IKEYMAN50_HOME', 'INCLUDE',
+    'INIT_FILE_NAMES', 'INIT_FILE_RANGES', 'IPF_KEYS', 'KEYS',
+    'KILLFEATUREENABLED', 'LANG', 'LANINSTEP', 'LIB', 'LIBPATHSTRICT',
+    'LOCPATH', 'LOGNAME', 'MANPATH', 'MENUSFOLLOWPOINTER', 'MMBASE', 'MMBUF',
+    'MMSTREAM', 'NCDEBUG', 'NLSPATH', 'NNTPSERVER', 'NWDBPATH', 'OS2_SHELL',
+    'PATH', 'PM_ASYNC_FOCUS_CHANGE', 'PROMPT', 'RESTARTOBJECTS',
+    'RUNWORKPLACE', 'SCCANBENUKED', 'SCFINDUTILITY', 'SCKILLCONFIRMDISABLED',
+    'SCUSEPRETTYCLOCK', 'SET' , 'SHAPIEXCEPTIONHANDLER',
+    'SHELLEXCEPTIONHANDLER', 'SHELLHANDLESINC', 'SMINCLUDE', 'SOMBASE',
+    'SOMDDIR', 'SOMDTHREADPEER', 'SOMIR', 'SOMRUNTIME', 'SWING_HOME',
+    'SYSTEM_INI', 'TCPLANG', 'TEMP', 'TERM', 'TERMCAP', 'TMP', 'TMPDIR', 'TZ',
+    'ULSPATH', 'USE_HOSTS_FIRST', 'USER', 'USER_INI', 'VIDEO_APERTURE',
+    'VIDEO_DEVICES', 'WARPCENTERNUKEABLE', 'WPS_COMMUNICATION', 'X11ROOT',
+    'X11SHELL', 'XSERVER'
+};
+
+# Various command parameters
+keyword 'Editor_Keywords3' {
+    'ABSOLUTE', 'AC', 'ALL', 'AUTOCHECK', 'BGA', 'BUFFERIDLE', 'CACHE', 'CGA',
+    'COMMIT', 'CONNECTIONS', 'CRECL', 'DELAYSWAP', 'DIRTYMAX', 'DISKIDLE',
+    'DYNAMIC', 'EGA', 'FOLDERS', 'HIGH', 'KBD', 'LAUNCHPAD', 'LAZY', 'LOW',
+    'LSL', 'LW', 'MAXAGE', 'MOVE', 'NO', 'NOMOVE', 'NOSWAP', 'NUL', 'NUMON',
+    'OFF', 'ON', 'PD', 'PROGRAMS', 'PROTECT', 'R0', 'READAHEAD', 'REBOOTONLY',
+    'REQ', 'SCR', 'SHARE', 'STARTUPFOLDERSONLY', 'SWAP', 'TASKLIST', 'UMB',
+    'VGA', 'WARPCENTER', 'YES'
+};
+
+# DOS multiple configuration menu keywords
+keyword 'Editor_Keywords4' {
+    'MENU', 'COMMON', 'INCLUDE', 'MENUCOLOR', 'MENUDEFAULT',
+    'MENUITEM', 'SUBMENU',
+};
+
+    h_state 0 { 'Normal' }
+    h_trans { 1, '^', 'REM', 'Comment' } 
+    h_trans { 1, '^', 'rem', 'Comment' } 
+    h_trans { 5, '-s', 'a-zA-Z_$@', 'Normal' }
+    h_trans { 2, '<', '\'', 'String' }
+    h_trans { 3, '<', '"', 'String' }
+    h_trans { 4, '-s', '0-9', 'Number' }
+    h_trans { 0, 'S', 'a-zA-Z0-9_$@', 'Punctuation' }
+    
+    h_state 1 { 'Comment' }
+    h_trans { 0, '$', '', 'Comment' }
+
+    h_state 2 { 'String' }
+    h_trans { 0, '$', '', 'Normal' }
+    h_trans { 0, '', '\'', 'String' }
+
+    h_state 3 { 'String' }
+    h_trans { 0, '$', '', 'Normal' }
+    h_trans { 0, '', '"', 'String' }
+
+    h_state 4 { 'Number' }
+    h_trans { 0, '$', '', 'Normal' }
+    h_trans { 0, 's', 'Hh', 'Number' }
+    h_trans { 0, '-S', '0-9A-Fa-f', 'Number' }
+
+    h_state 5 { 'Normal' }
+    h_trans { 0, '$', '', 'Normal' }
+    h_wtype { 0, 0, 0, 'i', 'a-zA-Z0-9_$@' }
+}
+
+mode CNFGSYS: PLAIN {                    # CONFIG.SYS mode
+    FileNameRx          = /\c{CONFIG\..*}$/; # CONFIG.*
+    HilitOn             = 1;
+    Colorizer           = 'CNFGSYS';
+    TabSize             = 8;
+    AutoIndent          = 0;
+    IndentMode          = 'SIMPLE';
+    MultiLineHilit      = 1;
+    AutoHilitParen      = 1;
+
+    SaveFolds           = 2;      # save fold info at end of line
+    CommentStart        = " REM";
+    CommentEnd          = '';
+
+    RoutineRegexp       = /^[\w_]+:/;
+}

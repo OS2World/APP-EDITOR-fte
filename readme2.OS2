@@ -1,0 +1,36 @@
+02 Mar 2008
+
+This package combines Alfredo Fernandez Diaz's IPF/HTML configuration updates and Spanish language support with Michael Greene's change including open watcom support (see below). In addition it now uses wrc.exe which was updated by Steven Levine and should be part of Open Watcom 1.8 It can currently be found here http://svn.netlabs.org/fm2/ticket/131. In addition the latest code from the CVS has been incorporated.
+
+I have made some minor changes to the menu structure. I also fixed several problems with search and replace in the PM version. It was built with open watcom 1.7a
+
+It now has the Norton color scheme as the default (blue backgraoud).
+
+26 Jan 2006
+
+
+Other than a couple small changes, the major reason for this version
+is the release of OpenWatcom 1.4 GA which I use to compile. So, this
+upload includes binary and source.
+
+To build:
+
+cd into SRC directory
+
+wmake [owos2 or owclean]
+
+the owos2 option will build console and pm version
+
+
+Oh, if you use the console version of NT/XP you can build it with OW14GA
+on a Win machine - sorry OS/2 only peoples.
+
+Also... sorry about the white background Doodle.
+
+
+Changes:
+
+1. Still doing little changes in dialogs
+
+2. Patched with Sergey Pinigin's svn changes, guess this works the
+   same as FTE cvs, but I don't know - feedback?
