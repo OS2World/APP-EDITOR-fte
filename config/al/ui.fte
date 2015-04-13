@@ -1,0 +1,38 @@
+# FTE
+#if you chose MY UI style, then you have to choose a lang...
+
+#%define(LANG_ES)
+%define(LANG_EN)
+
+%if(LANG_ES)
+ include 'ui_m_es.fte';
+ include 'ui_k_es.fte';
+%endif
+%if(LANG_EN)
+ include 'ui_m_en.fte';
+ include 'ui_k_en.fte';
+%endif
+
+include '../menu/m_c.fte';
+
+#include '../menu/m_html.fte';
+%define(TEXT_CONV)
+include 'htmlconv.fte';
+%define(TEXT_CHARS)
+include 'htmlchar.fte';
+include 'menu/m_html/main.fte';
+include 'menu/m_css.fte';
+include 'menu/m_ipf.fte';
+
+include '../menu/m_rexx.fte';
+include '../menu/m_sgml.fte';
+#include '../menu/m_rst.fte';
+include '../kbd/k_c.fte';
+include '../kbd/k_java.fte';
+include '../kbd/k_perl.fte';
+include '../kbd/k_rexx.fte';
+include '../kbd/k_fte.fte';
+#include '../kbd/k_html.fte';
+include 'kbd/k_html.fte';
+include '../kbd/k_sgml.fte';
+#include '../kbd/k_rst.fte';
